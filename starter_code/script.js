@@ -23,26 +23,35 @@ var pickWinner = function(userChoice, computerChoice) {
     // Task 2, Step 1: Create an "if/else if/else" statement that compares the
     // userChoice and computerChoice under any possible game outcome.
     var winner;
+    
     if (userChoice === computerChoice) {
+        winner = "tie";
         console.log("Tie");
+        
     }
     else if (userChoice == "rock" && computerChoice == "paper") {
+        winner = "computer wins";
         console.log("Computer Wins");
     }
     else if (userChoice == "rock" && computerChoice == "scissors"){
+        winner = "user wins";
         console.log("User Wins");
     }
     
     else if (userChoice == "scissors" && computerChoice == "rock"){
+        winner = "computer wins";
         console.log("Computer Wins");
     }
     else if (userChoice == "scissors" && computerChoice == "paper") {
+        winner = "user wins";
         console.log("User Wins");
     }
     else if (userChoice == "paper" && computerChoice == "scissors"){
+        winner = "computer wins";
         console.log("Computer Wins");
     }
         else if (userChoice == "paper" && computerChoice == "rock"){
+        winner = "user wins";    
         console.log("User Wins");
     }
     
@@ -51,14 +60,35 @@ var pickWinner = function(userChoice, computerChoice) {
     
     // Task 2, Step 2: Depending on who is the winner of the game console.log
     // either "user wins", "computer wins" or "draw"
-
+    console.log("Winner: " + winner);
     // Task 4: Show `computerChoice` in HTML after the words "Computer's choice:"
+    
+        $("#computer-choice").html(computerChoice);
+        
+        $("#computer-choice").html('<img id="rock" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Scissors_icon_black.svg/2000px-Scissors_icon_black.svg.png" width="100px" />');
     // Task 5: Show the winner in HTML after the word "Winner:"
+    
+    $("#winner").html(winner);
 };
 
 /* DOCUMENT READY: Everything inside this function will happen after
    the user's browser has finished loading the webpage. */
 $(document).ready(function() {
+    $("#scissors").click( function(){
+	var userChoice = "scissors";
+	var computerChoice = generateComputerChoice();
+	pickWinner(userChoice, computerChoice);
+});
+    $("#rock").click( function(){
+	var userChoice = "rock";
+	var computerChoice = generateComputerChoice();
+	pickWinner(userChoice, computerChoice);
+});
+    $("#paper").click( function(){
+	var userChoice = "paper";
+	var computerChoice = generateComputerChoice();
+	pickWinner(userChoice, computerChoice);
+});
 
     // This line calls the `generateComputerChoice` function and assigns its
     // return value to the variable `computerChoice`.
